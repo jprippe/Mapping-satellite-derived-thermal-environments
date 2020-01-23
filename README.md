@@ -6,7 +6,7 @@ This procedure takes advantage of the ERDDAP data server, which provides access 
 
 This repository includes the scripts and map layer to process the data and generate a map figure as well as a text walkthrough (downloadtoMap_README.txt). This is written specifically for implementation on the Texas Advanced Computing Center but can be modified without much trouble for use in any computing environment.
 
-Example output:
+### Example output:
 
-Caribbean - Mean SST (1982-2018)
+_Caribbean - Mean SST (1982-2018)_
 ![Caribbean - Mean SST (1982-2018)](/meanSST_Carib.png)
