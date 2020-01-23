@@ -8,6 +8,5 @@ This repository includes the scripts and map layer to process the data and gener
 
 Example output:
 
-![Caribbean - Mean SST (1982-2018)](/meanSST_Carib.png)
-
 Caribbean - Mean SST (1982-2018)
+![Caribbean - Mean SST (1982-2018)](/meanSST_Carib.png)
