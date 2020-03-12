@@ -51,6 +51,14 @@ pix.means <- data.frame(summ.list[['yr_1982']]$mean)
 for(i in 1983:2018){pix.means <- cbind(pix.means,summ.list[[paste0('yr_',i)]]$mean)}
 all.avg$slope <- apply(pix.means, 1, function(x) lm.fun(x,c(1982:2018)))
 
+# Calculate region-wide correlation with climate indices
+amo <- read.csv('AMOindex_Kaplan.csv')
+nao <- read.csv('NAOindex_NWS_CPC.csv')
+amo.ann <- data.frame(Year = amo[amo$Year>1981,1], AMO = rowMeans(amo[amo$Year>1981,-1]))
+nao.ann <- data.frame(Year = nao[nao$Year>1981,1], NAO = rowMeans(nao[nao$Year>1981,-1]))
+all.avg$AMO_corr <- apply(pix.means, 1, function(x) cor(x,amo.ann$AMO))
+all.avg$NAO_corr <- apply(pix.means, 1, function(x) cor(x,nao.ann$NAO))
+
 # Use principal component analysis to evaluate multivariate patterns across the seascape
 pca.dat <- rda(all.avg, scale = T)
 pca.coords <- pca.dat$CA$u
