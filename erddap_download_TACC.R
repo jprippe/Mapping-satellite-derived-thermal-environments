@@ -52,7 +52,7 @@ data_sub <- function(time_df){
   data_res <- griddap(x = datasetid, 
                        url = url, 
                        time = c(time_df$start, time_df$end), 
-                       altitude = c(0, 0),
+                       zlev = c(0, 0),
                        latitude = latitude.range,
                        longitude = longitude.range,
                        fields = var.id)$data %>% 
