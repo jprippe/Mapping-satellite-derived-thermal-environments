@@ -46,18 +46,20 @@ end.date = args[9]
 # The information for the dataset
 rerddap::info(datasetid = datasetid, url = url)
 
-# This function expects the user to provide it with a start and end date
-# It then downloads and prepares the data
+### IMPORTANT: ###
+# If the dataset includes an altitude dimension, it needs to be specified in the following function (e.g., zlev below). 
+# If not, the zlev line should be deleted.
+#######
 data_sub <- function(time_df){
   data_res <- griddap(x = datasetid, 
-                       url = url, 
-                       time = c(time_df$start, time_df$end), 
-                       zlev = c(0, 0),
-                       latitude = latitude.range,
-                       longitude = longitude.range,
-                       fields = var.id)$data %>% 
+                      url = url, 
+                      time = c(time_df$start, time_df$end), 
+                      zlev = c(0, 0),
+                      latitude = latitude.range,
+                      longitude = longitude.range,
+                      fields = var.id)$data %>% 
     mutate(time = as.Date(str_remove(time, "T00:00:00Z"))) %>% 
-    dplyr::rename(t = time, var = sst) %>% 
+    rename(t = time, var = all_of(var.id)) %>% 
     select(lon, lat, t, var) %>% 
     na.omit()
 }
