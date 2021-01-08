@@ -26,6 +26,10 @@ done
 # start date (YYYY-MM-DD)
 # end date (YYYY-MM-DD)
 
+### IMPORTANT ###
+# Some datasets include an altitude dimension. If so, this needs to be specified in the 'data_sub' function before running the above commands. If not, the line specifying 'zlev' should be deleted from the function.
+#########
+
 # Execute all commands in the resulting file. Individual .Rda files will be output to the working directory for each of the years specified.
 
 
